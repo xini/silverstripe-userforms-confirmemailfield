@@ -1,0 +1,19 @@
+{
+	"name": "xini/silverstripe-userforms-confirmemailfield",
+	"description": "Adds an email confirmation field that forces the value to be the same as another email field.",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "userforms", "email", "confirm"],
+	"authors": [{
+		"name": "Florian Thoma",
+		"email": "florian@innoweb.com.au"
+	}],
+	"require":
+	{
+		"silverstripe/framework": "3.1.*",
+		"silverstripe/cms": "3.1.*",
+		"silverstripe/userforms": "*"
+	},
+	"extra": {
+		"installer-name": "userforms-confirmemailfield"
+	}
+}

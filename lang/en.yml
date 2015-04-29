@@ -1,0 +1,4 @@
+en:
+  EditableConfirmEmailField:
+    PLURALNAME: 'Email Confirmation Fields'
+    SINGULARNAME: 'Email Confirmation Field'
