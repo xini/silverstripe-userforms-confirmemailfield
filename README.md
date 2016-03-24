@@ -6,6 +6,6 @@ Adds an email confirmation field that forces the value to be the same as another
 
 ## Requirements
 
- * SilverStripe 3.1
- * UserForms module
+ * SilverStripe ~3.1
+ * UserForms module ~3.0
 

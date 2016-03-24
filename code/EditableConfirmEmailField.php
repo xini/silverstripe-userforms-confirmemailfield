@@ -15,14 +15,15 @@ class EditableConfirmEmailField extends EditableEmailField {
 	
 	private static $plural_name = 'Email Confirmation Fields';
 	
-	public function getFieldValidationOptions() {
+	public function getFieldValidationOptions()
+	{
 		$fields = parent::getFieldValidationOptions();
 		
 		$validEmailFields =  EditableEmailField::get()->filter(array(
 			'ParentID' => (int)$this->ParentID,
 		))->exclude(array(
 			'ID' => (int)$this->ID,
-		)); 
+		));
 		
 		$fields->add(
 			DropdownField::create(
@@ -36,32 +37,25 @@ class EditableConfirmEmailField extends EditableEmailField {
 		return $fields;
 	}
 	
-	public function populateFromPostData($data) {
+	public function populateFromPostData($data)
+	{
 		$this->EqualToID 	= (isset($data['EqualTo'])) ? $data['EqualTo']: 0;
 		
 		parent::populateFromPostData($data);
 	}
 	
-	/**
-	 * Return the validation information related to this field. This is 
-	 * interrupted as a JSON object for validate plugin and used in the 
-	 * PHP. 
-	 *
-	 * @see http://docs.jquery.com/Plugins/Validation/Methods
-	 * @return Array
-	 */
-	public function getValidation() {
-		$options = parent::getValidation();
+	protected function updateFormField($field)
+	{
+		parent::updateFormField($field);
 		
-		if($this->EqualToID) {
-			$fieldid = "Form_Form_".$this->EqualTo()->getFormField()->ID();
-			$options['equalTo'] = '#'.$fieldid;
-		}
-			
-		return $options;
+        if ($this->EqualTo()) {
+            $fieldid = "UserForm_Form_".$this->EqualTo()->getFormField()->ID();
+            $field->setAttribute('data-rule-equalTo', '#'.$fieldid);
+        }
 	}
 	
-	public function getIcon() {
+	public function getIcon()
+	{
 		return USERFORMS_DIR . '/images/' . strtolower(get_parent_class($this)) . '.png';
 	}
 }
