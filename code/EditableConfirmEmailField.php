@@ -27,7 +27,7 @@ class EditableConfirmEmailField extends EditableEmailField {
 		
 		$fields->add(
 			DropdownField::create(
-				$this->getFieldName('EqualTo'),
+			    'EqualToID',
 				_t('EditableConfirmEmailField.EQUALTO', 'Must be equal to'),
 				$validEmailFields->map('ID', 'Title'),
 				$this->EqualToID
